@@ -5,6 +5,12 @@ agent any
 
     stages {
 
+        stage ('Workspace Cleanup') {
+          steps {
+              deleteDir()
+    	         }
+                                    }       
+
     	stage ('SCM Checkout') {
 		steps {
 			script {
