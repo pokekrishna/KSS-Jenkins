@@ -38,7 +38,7 @@ pipeline {
                  sh "cp target/KSS-Jenkins-1.0-SNAPSHOT.jar ./tmp-docker-build-context"
                  withDockerRegistry([credentialsId: 'b6ef8f34-268d-4a12-a02f-c0eb8bf002ec', url: "https://hub.docker.com/"]) {
   // we give the image the same version as the .war package
-  def image = docker.build("prakashul/knowledgemeet:${BUILD_ID}",  ./tmp-docker-build-context")
+  def image = docker.build("prakashul/knowledgemeet:prakashul-test",  ./tmp-docker-build-context")
                 image.push()
               }}
             }
