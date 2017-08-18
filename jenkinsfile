@@ -17,7 +17,7 @@ stages {
     deleteDir()
 	}
   }
-      
+
   stage ('SCM Checkout') {
 	steps {
 
@@ -25,38 +25,38 @@ stages {
     git branch: branch, credentialsId: git_repo_credential_token, url: git_repo_url
   	   }
               }
-                         }      
+                         }
 
   stage ('Branch Checkout') {
     steps {
     sh 'git checkout '+env.branch
           }
-                            }               
+                            }
 
   stage ('Build Artifact') {
     steps {
     sh 'echo Building Artifact'
-          }                       
+          }
                             }
 
-  
+
   stage ('Push Artifact') {
 		when { branch 'staging' }
 	steps {
     	     echo 'Pushing Artifact As Branch given is staging'
  	script {
-	try { 
+	try {
 	timeout(time: 20, unit: 'SECONDS') {
 	input 'Do you want to proceed to the Deployment?'
 	}
   }
 	catch(err) {
     		err.printStackTrace()
-    						} 
+    						}
 		sh 'echo Proceeding'
 	       }
-            }          
-                          }             
+            }
+                          }
 
 
 stage ('Deploy') {
