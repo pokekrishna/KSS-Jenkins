@@ -47,7 +47,7 @@ agent any
 
                 script {
         // we give the image the same version as the .war package
-              def image = docker.build("prakashul/knowledgemeet:km",'.')
+              def image = docker.build("prakashul/knowledgemeet:latest",'.')
               image.push()
 }
   //                script {
