@@ -1,8 +1,5 @@
 pipeline {
 
-  env.docker_repo_name= ""
-  env.docker_image_name= "dotrips-"+env.module_name
-
 agent any
 
     stages {
