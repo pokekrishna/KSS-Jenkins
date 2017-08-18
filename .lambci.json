@@ -1,5 +1,5 @@
 {
-  "cmd": ". ~/init/java 1.8 && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V && mvn test"
+  "cmd": ". ~/init/java 1.8 && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V && mvn test",
   "notifications": {
     "slack": {
       "asUser": false,
