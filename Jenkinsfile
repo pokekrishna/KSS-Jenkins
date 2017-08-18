@@ -1,9 +1,8 @@
 pipeline {
-    agent { docker "maven:3-jdk-8" }
+    agent { docker "maven:3.5-jdk-8" }
     stages {
         stage("build") {
             steps {
-                sh 'mvn package'
                 sh 'ls -R *'
             }
         }
