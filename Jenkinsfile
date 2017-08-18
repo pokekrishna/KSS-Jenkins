@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker "maven:3-jdk-8" }
+    agent none
 
 
     stages {
@@ -24,6 +24,7 @@ pipeline {
                           }
 
 	stage("build_artifact") {
+    agent { docker "maven:3-jdk-8" }
             steps {
                 sh 'mvn package'
                 sh 'ls -R *'
@@ -32,6 +33,8 @@ pipeline {
                 }
 
     stage("build_push_image") {
+
+      agent any
 
         steps {
                   script {
