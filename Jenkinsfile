@@ -9,7 +9,7 @@ agent any
           steps {
               deleteDir()
     	         }
-                                    }       
+                                    }
 
     	stage ('SCM Checkout') {
 		steps {
@@ -62,7 +62,7 @@ agent any
     post {
         always {
             archive "target/**/*.jar"
-            junit 'target/surefire-reports/*.xml'
+            // junit 'target/surefire-reports/*.xml'
         }
     }
 }
