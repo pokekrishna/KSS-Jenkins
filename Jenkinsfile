@@ -77,6 +77,8 @@ parameters {
                }
 
 }
+}
+}
 
     stage("deploy") {
       agent any
