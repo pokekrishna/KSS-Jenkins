@@ -1,12 +1,13 @@
 pipeline {
 
 agent any
-parameters {
-        choice(
-            choices: 'staging\nprakashul-qa',
-            description: '',
-            name: 'REQUESTED_ACTION')
-}
+
+//parameters {
+//        choice(
+//            choices: 'staging\nprakashul-qa',
+//            description: '',
+//            name: 'REQUESTED_ACTION')
+//}
 
 
     stages {
@@ -38,9 +39,9 @@ parameters {
 
 	stage("build_artifact") {
         agent { docker "maven:3-jdk-8" }
-	when {
-                expression { params.REQUESTED_ACTION == 'prakashul-qa' }
-            }
+//	when {
+  //              expression { params.REQUESTED_ACTION == 'prakashul-qa' }
+    //        }
             steps {
                 sh 'mvn package'
                 sh 'ls -R *'
@@ -52,9 +53,9 @@ parameters {
 
       agent any
 
-	when {
-                expression { params.REQUESTED_ACTION == 'prakashul-qa' }
-            }
+//	when {
+  //              expression { params.REQUESTED_ACTION == 'prakashul-qa' }
+    //        }
 
 
         steps {
