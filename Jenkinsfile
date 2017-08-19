@@ -28,13 +28,18 @@ pipeline {
         )
       }
     }
-    stage('Building and Stashing') {
+    stage('Packing and Stashing') {
       agent {
         label 'maven-docker'
       }
       steps {
         sh 'mvn package -Dmaven.test.skip=true'
         stash(name: 'stash_artefact', includes: 'target/KSS-Jenkins-1.0-SNAPSHOT.jar')
+      }
+    }
+    stage('Unstash the artefact') {
+      steps {
+        unstash 'target/KSS-Jenkins-1.0-SNAPSHOT.jar'
       }
     }
   }
