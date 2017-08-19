@@ -29,6 +29,9 @@ pipeline {
       }
     }
     stage('Building and Stashing') {
+      agent {
+        label 'maven-docker'
+      }
       steps {
         sh 'mvn package'
       }
