@@ -11,9 +11,18 @@ pipeline {
         git(url: 'https://github.com/pokekrishna/KSS-Jenkins.git', branch: 'kss', changelog: true)
       }
     }
-    stage('Run Test Cases') {
+    stage('Check Files and Test') {
       steps {
-        echo 'In Test stage'
+        parallel(
+          "Check Files": {
+            sh 'ls'
+            
+          },
+          "Run Tests": {
+            sh 'mvn test'
+            
+          }
+        )
       }
     }
   }
