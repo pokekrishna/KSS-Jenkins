@@ -2,7 +2,7 @@ pipeline {
 
 
 agent any
-
+triggers { pollSCM('* */3 * * *') }
 //parameters {
 //        choice(
 //            choices: 'staging\nprakashul-qa',
