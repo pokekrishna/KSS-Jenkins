@@ -22,7 +22,7 @@ pipeline {
             
           },
           "Run Tests": {
-            sh 'mvn test'
+            //sh 'mvn test'
             
           }
         )
@@ -33,7 +33,7 @@ pipeline {
         label 'maven-docker'
       }
       steps {
-        sh 'mvn package'
+        sh 'mvn package -Dmaven.test.skip=true'
       }
     }
   }
