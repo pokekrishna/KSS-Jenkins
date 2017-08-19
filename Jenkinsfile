@@ -12,6 +12,7 @@ pipeline {
       }
     }
     stage('Check Files and Test') {
+      agent { label 'maven-docker' }
       steps {
         parallel(
           "Check Files": {
