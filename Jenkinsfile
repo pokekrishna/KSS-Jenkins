@@ -39,7 +39,7 @@ pipeline {
     }
     stage('Unstash the artefact') {
       steps {
-        unstash 'KSS-Jenkins-1.0-SNAPSHOT.jar'
+        unstash 'target/KSS-Jenkins-1.0-SNAPSHOT.jar'
       }
     }
   }
