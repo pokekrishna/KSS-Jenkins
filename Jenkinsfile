@@ -64,9 +64,6 @@ parameters {
         // we give the image the same version as the .war package
               def image = docker.build("prakashul/knowledgemeet:latest",'.')
               image.push()
-}
-}
-
 
         try {
         timeout(time: 20, unit: 'SECONDS') {
