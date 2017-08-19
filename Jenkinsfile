@@ -22,6 +22,7 @@ pipeline {
             
           },
           "Run Tests": {
+            print "test starts"
             //sh 'mvn test'
             
           }
