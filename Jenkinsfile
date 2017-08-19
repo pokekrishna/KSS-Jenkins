@@ -3,7 +3,7 @@ pipeline {
 agent any
 parameters {
         choice(
-            choices: 'staging\prakashul-qa',
+            choices: 'staging\nprakashul-qa',
             description: '',
             name: 'REQUESTED_ACTION')
 }
