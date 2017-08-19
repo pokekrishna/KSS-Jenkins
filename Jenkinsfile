@@ -2,7 +2,7 @@ pipeline {
 
 agent any
 
-triggers { pollSCM('H 0 10 0 1-5') }
+triggers { pollSCM('* 10 0 *') }
 
 //	parameters {
 //        choice(
