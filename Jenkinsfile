@@ -64,16 +64,19 @@ parameters {
         // we give the image the same version as the .war package
               def image = docker.build("prakashul/knowledgemeet:latest",'.')
               image.push()
+
+        try {
+        timeout(time: 20, unit: 'SECONDS') {
+        input 'Do you want to proceed to the Deployment?'
+        }
+  }
+        catch(err) {
+                err.printStackTrace()
+                                                }
+                sh 'echo Proceeding To Deployment'
+               }
+
 }
-  //                script {
-    //             sh '/usr/bin/docker build --no-cache -t prakashul/knowledgemeet .'
-    //            withDockerRegistry([credentialsId: 'b6ef8f34-268d-4a12-a02f-c0eb8bf002ec', url: "https://hub.docker.com/"]) {
-  // we give the image the same version as the .war package
-
-
-    //            }
-            //  }
-            }
 }
 }
 
