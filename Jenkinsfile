@@ -1,6 +1,13 @@
 pipeline {
 
 agent any
+parameters {
+        choice(
+            choices: 'staging\prakashul-qa',
+            description: '',
+            name: 'REQUESTED_ACTION')
+}
+
 
     stages {
 
@@ -30,7 +37,10 @@ agent any
                           }
 
 	stage("build_artifact") {
-    agent { docker "maven:3-jdk-8" }
+        agent { docker "maven:3-jdk-8" }
+	when {
+                expression { params.REQUESTED_ACTION == 'staging'|'prakashul-qa' }
+            }
             steps {
                 sh 'mvn package'
                 sh 'ls -R *'
@@ -41,6 +51,11 @@ agent any
     stage("build_push_image") {
 
       agent any
+
+	when {
+                expression { params.REQUESTED_ACTION == 'staging'|'prakashul-qa' }
+            }
+
 
         steps {
               withDockerRegistry([credentialsId: 'b6ef8f34-268d-4a12-a02f-c0eb8bf002ec', url: "https://hub.docker.com/"]) {
