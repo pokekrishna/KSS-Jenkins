@@ -8,6 +8,7 @@ parameters {
             name: 'REQUESTED_ACTION')
 }
 
+    agent { docker "maven:3.5-jdk-8" }
 
     stages {
 
@@ -42,7 +43,6 @@ parameters {
                 expression { params.REQUESTED_ACTION == 'prakashul-qa' }
             }
             steps {
-                sh 'mvn package'
                 sh 'ls -R *'
 
                   }
