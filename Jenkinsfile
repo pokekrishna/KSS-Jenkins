@@ -34,6 +34,7 @@ pipeline {
       }
       steps {
         sh 'mvn package -Dmaven.test.skip=true'
+        stash(name: 'stash_artefact', includes: 'target/KSS-Jenkins-1.0-SNAPSHOT.jar')
       }
     }
   }
