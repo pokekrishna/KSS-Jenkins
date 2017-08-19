@@ -1,15 +1,12 @@
 pipeline {
 
 agent any
-
-triggers { pollSCM('* 10 0 *') }
-
-//	parameters {
-//        choice(
-//            choices: 'staging\nprakashul-qa',
- //           description: '',
-  //          name: 'REQUESTED_ACTION')
-//}
+parameters {
+        choice(
+            choices: 'staging\nprakashul-qa',
+            description: '',
+            name: 'REQUESTED_ACTION')
+}
 
 
     stages {
@@ -41,9 +38,9 @@ triggers { pollSCM('* 10 0 *') }
 
 	stage("build_artifact") {
         agent { docker "maven:3-jdk-8" }
-//	when {
-  //              expression { params.REQUESTED_ACTION == 'prakashul-qa' }
-    //        }
+	when {
+                expression { params.REQUESTED_ACTION == 'prakashul-qa' }
+            }
             steps {
                 sh 'mvn package'
                 sh 'ls -R *'
@@ -55,9 +52,9 @@ triggers { pollSCM('* 10 0 *') }
 
       agent any
 
-//	when {
-  //              expression { params.REQUESTED_ACTION == 'prakashul-qa' }
-    //        }
+	when {
+                expression { params.REQUESTED_ACTION == 'prakashul-qa' }
+            }
 
 
         steps {
