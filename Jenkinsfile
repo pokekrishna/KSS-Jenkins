@@ -1,20 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('User Confirmation') {
+    stage('Confirm Start?') {
       steps {
-        input(message: 'Confirm Start?', id: 'confirm_start', ok: 'True')
+        input(message: 'Confirm Start?', id: 'confirm_start', ok: 'Yes')
       }
     }
-    stage('Test') {
+    stage('Git Checkout') {
       steps {
-        sh 'make check'
-        junit 'reports/**/*.xml'
+        git(url: 'https://github.com/pokekrishna/KSS-Jenkins.git', branch: 'kss', changelog: true)
       }
     }
-    stage('Deploy') {
+    stage('Run Test Cases') {
       steps {
-        sh 'make publish'
+        echo 'In Test stage'
       }
     }
   }
