@@ -39,7 +39,7 @@ parameters {
 	stage("build_artifact") {
         agent { docker "maven:3-jdk-8" }
 	when {
-                expression { params.REQUESTED_ACTION == 'staging' }
+                expression { params.REQUESTED_ACTION == 'prakashul-qa' }
             }
             steps {
                 sh 'mvn package'
@@ -53,7 +53,7 @@ parameters {
       agent any
 
 	when {
-                expression { params.REQUESTED_ACTION == 'staging'|'prakashul-qa' }
+                expression { params.REQUESTED_ACTION == 'prakashul-qa' }
             }
 
 
