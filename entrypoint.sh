@@ -1,7 +1,5 @@
 #!/bin/bash
+#!/bin/bash
 
-nohup java -jar /root/KSS-Jenkins.jar & >> /dev/null 2>&1
-
-sleep 2
-
-exit 0
+nohup java -jar /root/KSS-Jenkins.jar 1>/dev/null 2>/dev/null &
+echo "Deployed Successfully"
